@@ -30,35 +30,38 @@ export class FileSystemDatasource implements LogDatasource {
 		fs.appendFileSync(this.allLogsPath, logAsJson);
 
 		switch (log.level) {
-            case LogSeverityLevel.low:
-                fs.appendFileSync(this.lowLogsPath, logAsJson);
-                break;
-            case LogSeverityLevel.medium:
-                fs.appendFileSync(this.mediumLogsPath, logAsJson);
-                break;
-            case LogSeverityLevel.high:
-                fs.appendFileSync(this.highLogsPath, logAsJson);
-                break;
-            default:
-                break;
-        }
-    }
+			case LogSeverityLevel.low:
+				fs.appendFileSync(this.lowLogsPath, logAsJson);
+				break;
+			case LogSeverityLevel.medium:
+				fs.appendFileSync(this.mediumLogsPath, logAsJson);
+				break;
+			case LogSeverityLevel.high:
+				fs.appendFileSync(this.highLogsPath, logAsJson);
+				break;
+			default:
+				break;
+		}
+	}
 
-    private getLogsFromFile = async (path: string): Promise<LogEntity[]> => { 
-        const logs = fs.readFileSync(path, 'utf8');
-        return logs.split('\n').filter((log: string) => log !== '').map((log: string) => LogEntity.fromJson(log));
-    };
-    
+	private getLogsFromFile = async (path: string): Promise<LogEntity[]> => {
+		const logs = fs.readFileSync(path, 'utf8');
+		return logs
+			.split('\n')
+			.filter((log: string) => log !== '')
+			.map((log: string) => LogEntity.fromJson(log));
+	};
+
 	async getLogs(securityLevel: LogSeverityLevel): Promise<LogEntity[]> {
-        switch (securityLevel) {
-            case LogSeverityLevel.low:
-                return this.getLogsFromFile(this.lowLogsPath);
-            case LogSeverityLevel.medium:
-                return this.getLogsFromFile(this.mediumLogsPath);
-            case LogSeverityLevel.high:
-                return this.getLogsFromFile(this.highLogsPath);
-            default:
-                return this.getLogsFromFile(this.allLogsPath);
-        }
+		switch (securityLevel) {
+			case LogSeverityLevel.low:
+				return this.getLogsFromFile(this.lowLogsPath);
+			case LogSeverityLevel.medium:
+				return this.getLogsFromFile(this.mediumLogsPath);
+			case LogSeverityLevel.high:
+				return this.getLogsFromFile(this.highLogsPath);
+			default:
+				return this.getLogsFromFile(this.allLogsPath);
+		}
 	}
 }
