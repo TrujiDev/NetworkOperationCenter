@@ -15,10 +15,7 @@ export class ServerApp {
 	public static start() {
 		console.log('Server started');
 
-		new SendEmailLogs(emailService, fileSystemLogRepository).execute([
-			'kutedokashi@gmail.com',
-			'eetgrisales@gmail.com',
-		]);
+		new SendEmailLogs(emailService, fileSystemLogRepository).execute([]);
 
 		// emailService.sendEmailWithFileSystemLogs([
 		// 	'kutedokashi@gmail.com',
