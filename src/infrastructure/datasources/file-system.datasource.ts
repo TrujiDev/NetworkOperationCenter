@@ -46,6 +46,7 @@ export class FileSystemDatasource implements LogDatasource {
 
 	private getLogsFromFile = async (path: string): Promise<LogEntity[]> => {
 		const logs = fs.readFileSync(path, 'utf8');
+		if (!logs) return [];
 		return logs
 			.split('\n')
 			.filter((log: string) => log !== '')
