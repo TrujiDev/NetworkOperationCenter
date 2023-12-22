@@ -15,20 +15,15 @@ export class ServerApp {
 	public static start() {
 		console.log('Server started');
 
-		new SendEmailLogs(emailService, fileSystemLogRepository).execute([]);
+		// new SendEmailLogs(emailService, fileSystemLogRepository).execute([]);
 
-		// emailService.sendEmailWithFileSystemLogs([
-		// 	'kutedokashi@gmail.com',
-		// 	'eetgrisales@gmail.com',
-		// ]);
-
-		CronService.createJob('*/10 * * * * *', () => {
-			const url = 'http://localhost:3000/';
-			new CheckService(
-				fileSystemLogRepository,
-				() => console.log('Service is ok'),
-				() => console.log('Service is not ok')
-			).execute(url);
-		});
+		// CronService.createJob('*/10 * * * * *', () => {
+		// 	const url = 'http://localhost:3000/';
+		// 	new CheckService(
+		// 		fileSystemLogRepository,
+		// 		() => console.log('Service is ok'),
+		// 		() => console.log('Service is not ok')
+		// 	).execute(url);
+		// });
 	}
 }
