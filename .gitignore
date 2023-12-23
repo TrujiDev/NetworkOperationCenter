@@ -3,6 +3,7 @@
 /dist
 /logs
 /mongo
+/postgres
 
 .env
 
