@@ -8,10 +8,10 @@ import { ServerApp } from './presentation/server';
 })();
 
 async function main() {
-	// await MongoDB.connect({
-	// 	mongoURL: ENVS.MONGO_URL,
-	// 	dbName: ENVS.MONGO_DB_NAME,
-	// });
+	await MongoDB.connect({
+		mongoURL: ENVS.MONGO_URL,
+		dbName: ENVS.MONGO_DB_NAME,
+	});
 
 	// const newLog = await LogModel.create({
 	// 	message: 'Test log message from app.ts',
