@@ -4,6 +4,7 @@
 /logs
 /mongo
 /postgres
+.prisma/client
 
 .env
 
