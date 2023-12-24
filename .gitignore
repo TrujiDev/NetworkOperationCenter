@@ -8,8 +8,6 @@
 /coverage
 
 .env
-jest.config.ts
-docker-compose.test.yml
 
 npm-debug.log*
 yarn-debug.log*
